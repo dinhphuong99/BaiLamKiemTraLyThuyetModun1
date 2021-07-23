@@ -1,88 +1,44 @@
-let Student = function (name, age, email) {
-    this.name = name;
-    this.age = age;
-    this.email = email;
-    this.mathScore = 0;
-    this.physicsScore = 0;
-    this.chemistryScore = 0;
+let Student = function () {
 
-    this.setName = function (name) {
+    this.constructor = function (name, age, email) {
         this.name = name;
-    }
-
-    this.getName = function () {
-        return this.name;
-    }
-
-    this.setAge = function (age) {
         this.age = age;
-    }
-
-    this.getAge = function () {
-        return this.age;
-    }
-
-    this.setEmail = function (email) {
         this.email = email;
+        this.mathScore = 0;
+        this.physicsScore = 0;
+        this.chemistryScore = 0;
     }
 
-    this.getEmail = function () {
-        return this.email;
-    }
-
-    this.setMathScore = function (mathScore) {
-        this.mathScore = mathScore;
-    }
-
-    this.getMathScore = function () {
-        return this.mathScore;
-    }
-
-    this.setPhysicsScore = function (physicsScore) {
-        this.physicsScore = physicsScore;
-    }
-
-    this.getPhysicsScore = function () {
-        return this.physicsScore;
-    }
-
-    this.setChemistryScore = function (chemistryScore) {
-        this.chemistryScore = chemistryScore;
-    }
-
-    this.getChemistryScore = function () {
-        return this.chemistryScore;
-    }
-
-    this.inputScores = function (math, physics, chemistry){
-        this.setMathScore(math);
-        this.setPhysicsScore(physics);
-        this.setChemistryScore(chemistry);
+    this.inputScores = function (math, physics, chemistry) {
+        this.mathScore = math;
+        this.physicsScore = physics;
+        this.chemistryScore = chemistry;
     };
 
-    this.calsAverageScores = function (){
-        let avg = (this.mathScore*2 + this.physicsScore + this.chemistryScore)/4;
-        avg = avg*10;
-        avg = Math.round(avg)/10;
+    this.calsAverageScores = function () {
+        let avg = (this.mathScore * 2 + this.physicsScore + this.chemistryScore) / 4;
+        avg = avg * 10;
+        avg = Math.round(avg) / 10;
         return avg;
     }
 
     this.rank = function () {
-        let avg = this.calsAverageScores();
-        switch (avg) {
-            case (9<= avg && avg<=10):
+        var avg1 = this.calsAverageScores();
+        
+        switch (true) {
+            case (9 <= avg1 && avg1 <= 10):
                 return "Xuất sắc";
-            
-            case (8<= avg):
+
+            case (8 <= avg1):
                 return "Giỏi";
 
-            case (7<= avg):
+            case (7 <= avg1):
                 return "Khá";
 
-            case (5<= avg):
+            case (5 <= avg1):
                 return "Trung Bình";
 
-            case (0<= avg && avg <5):
+            case (0 <= avg1 && avg1 < 5):
                 return "Yếu";
 
             default:
@@ -92,42 +48,44 @@ let Student = function (name, age, email) {
     }
 
     this.printInfo = function () {
-        document.write("Tên: "+ this.name);
+        document.write("Tên: " + this.name);
         document.write("<br>");
 
-        document.write("Tuổi: "+ this.age);
+        document.write("Tuổi: " + this.age);
         document.write("<br>");
 
-        document.write("Email: "+ this.email);
+        document.write("Email: " + this.email);
         document.write("<br>");
 
-        document.write("Điểm Toán: "+ this.mathScore);
+        document.write("Điểm Toán: " + this.mathScore);
         document.write("<br>");
 
-        document.write("Điểm Lý: "+ this.physicsScore);
+        document.write("Điểm Lý: " + this.physicsScore);
         document.write("<br>");
 
-        document.write("Điểm Hoá: "+ this.chemistryScore);
+        document.write("Điểm Hoá: " + this.chemistryScore);
         document.write("<br>");
 
-        document.write("Điểm trung bình: "+ this.calsAverageScores());
+        document.write("Điểm trung bình: " + this.calsAverageScores());
         document.write("<br>");
 
-        document.write("Xếp loại: "+ this.rank());
+        document.write("Xếp loại: " + this.rank());
         document.write("<br>");
     }
 }
 
-function main() {
-    let an = Student("an", 19, "an@gmail.com");
-    let binh = Student("bình", 20, "binh@gmail.com");
-    let canh = Student("cảnh", 20, "canh@gmail.com");
+var an = new Student();
+var binh = new Student();
+var canh = new Student();
 
-    an.inputScores(9,8,8);
-    binh.inputScores(7,8,7);
-    canh.inputScores(8,7,8);
+an.constructor("an", 19, "an@gmail.com");
+binh.constructor("bình", 20, "binh@gmail.com");
+canh.constructor("cảnh", 20, "canh@gmail.com");
 
-    an.printInfo();
-    binh.printInfo();
-    canh.printInfo();
-}
+an.inputScores(9, 8, 8);
+binh.inputScores(7, 8, 7);
+canh.inputScores(8, 7, 8);
+
+an.printInfo();
+binh.printInfo();
+canh.printInfo();
